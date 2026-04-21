@@ -37,26 +37,18 @@ export default function CoreValues() {
   ];
 
   return (
-    <div className="relative py-14 px-4 lg:px-0 lg:py-24 w-full flex flex-col items-center justify-center overflow-hidden bg-[#FAFAFA] border-t border-gray-100 border-opacity-50">
+    <div className="relative py-14 px-4 lg:px-0 lg:py-24 w-full flex flex-col items-center justify-center overflow-hidden bg-[#FAFAFA] border-t border-gray-100">
 
-      {/* Soft Ambient Background Blurs */}
-      <div className="absolute top-0 left-[-5%] w-[40rem] h-[40rem] bg-[#967BB6] rounded-full filter blur-[160px] opacity-[0.06] pointer-events-none"></div>
-      <div className="absolute bottom-[-10%] right-[-5%] w-[40rem] h-[40rem] bg-[#3B719F] rounded-full filter blur-[160px] opacity-[0.06] pointer-events-none"></div>
-
-      {/* Subtle Dot Pattern */}
       <div
-        className="absolute inset-0 opacity-[0.08] pointer-events-none"
+        className="absolute inset-0 opacity-[0.04] pointer-events-none"
         style={{
           backgroundImage: `radial-gradient(#1E1E1E 1px, transparent 1px)`,
           backgroundSize: '24px 24px',
-          maskImage: 'radial-gradient(ellipse at center, black 40%, transparent 80%)',
-          WebkitMaskImage: 'radial-gradient(ellipse at center, black 40%, transparent 80%)'
         }}
       ></div>
 
       <div className="relative z-10 flex flex-col items-center w-full max-w-7xl mx-auto gap-14 lg:gap-20">
 
-        {/* Header Section */}
         <div className="flex flex-col items-center gap-5 text-center">
           <span className="text-[#C2B280] font-sans font-bold tracking-[0.25em] uppercase text-xs lg:text-sm">
             Our Core Values
@@ -64,47 +56,39 @@ export default function CoreValues() {
           <h2 className="font-playfair text-2xl leading-tight lg:leading-tight lg:text-5xl text-[#1E1E1E]">
             {title}
           </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-[#967BB6] via-[#C2B280] to-[#3B719F] rounded-full mt-2"></div>
+          <div className="w-24 h-1 bg-[#1E1E1E] rounded-full mt-2"></div>
         </div>
 
-        {/* Cards Grid */}
         <div className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-7 lg:px-4">
           {cards &&
             cards.map((card: any, index: number) => {
               const imageUrl = card.icon?.url;
               if (!imageUrl) return null;
 
-              const theme = cardThemes[index % cardThemes.length];
-
               return (
                 <div
                   key={card.id || index}
                   className="group relative flex flex-col h-full z-10"
                 >
-                  <div className={`relative flex flex-col flex-grow px-5 py-10 lg:px-6 lg:py-12 items-center justify-start gap-7 rounded-[2rem] bg-white border-t-[3px] border-t-transparent border border-gray-100/80 shadow-sm transition-all duration-500 overflow-hidden card-hover-lift ${theme.accentBorder}`}>
+                  <div className="relative flex flex-col flex-grow px-5 py-10 lg:px-6 lg:py-12 items-center justify-start gap-7 rounded-[2rem] bg-white border border-gray-200 transition-colors duration-300 hover:bg-gray-50 overflow-hidden">
 
-                    {/* Hover glow background */}
-                    <div className="absolute inset-0 bg-gradient-to-b from-gray-50/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
-
-                    {/* Action Icon Wrapper */}
-                    <div className={`relative p-5 rounded-2xl flex items-center justify-center ${theme.bg} shadow-lg transition-transform duration-500 group-hover:scale-105`}>
+                    <div className="relative p-5 rounded-2xl flex items-center justify-center bg-gray-100 transition-colors duration-300 group-hover:bg-gray-200">
                       <Image
-                        src={imageUrl}
-                        alt={card.title || "Core Value"}
-                        width={100}
-                        height={100}
-                        className="w-12 h-12 lg:w-14 lg:h-14 filter drop-shadow-sm"
-                        unoptimized
+                         src={imageUrl}
+                         alt={card.title || "Core Value"}
+                         width={100}
+                         height={100}
+                         className="w-12 h-12 lg:w-14 lg:h-14 opacity-80"
+                         unoptimized
                       />
                     </div>
 
-                    {/* Text Container */}
                     <div className="relative flex flex-col items-center justify-center gap-4 text-center z-10">
                       <h3 className="font-playfair text-xl lg:text-2xl font-semibold text-[#1E1E1E]">
-                        {card.title}
+                         {card.title}
                       </h3>
                       <p className="text-[#666666] text-sm lg:text-base leading-relaxed">
-                        {card.description}
+                         {card.description}
                       </p>
                     </div>
                   </div>
